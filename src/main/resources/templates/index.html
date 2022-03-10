@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Jugueteria</title>
+        <meta charset="UTF-8">
+    
+    </head>
+    <body>
+        
+        <div>Tienda</div>
+        
+        <h1>Lista de Juguetes</h1>
+        
+        <a th:href="@{/nuevoJuguete}">Nuevo juguete</a>
+        <br>
+          <br>
+      
+           <div th:if="${juguetesDB != null and !juguetesDB.empty}">
+        <table border="1">
+          
+                <tr>
+                    <th>Juguete</th>
+                    <th>Marca</th>
+                    <th>Descripcion</th>
+                     <th>Modificar</th>
+                      <th>Eliminar</th>
+                </tr>
+           
+            <tbody>
+                <tr th:each="juguete : ${juguetesDB}">
+                    <td th:text="${juguete.nombrejuguete}"></td>
+                    <td th:text="${juguete.marca}"></td>
+                    <td th:text="${juguete.descripcion}"></td>
+                    <td><a th:href="@{/modificarJuguete/} + ${juguete.idjuguete}"> Modificar </a></td>
+                    <td><a th:href="@{/eliminarJuguete/} + ${juguete.idjuguete}">Eliminar</a></td>
+                </tr>
+            </tbody>
+        </table>
+ 
+          
+         
+   
+      
+    </body>
+</html>
